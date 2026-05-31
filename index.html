@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Stories in Context — Culturally responsive telehealth therapy in New York State. Sessions in English and Arabic." />
+    <title>Stories in Context | Therapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --sage: #8faa8b;
+            --sage-light: #d4e0d3;
+            --sage-pale: #eaf0e9;
+            --cream: #f5f0e8;
+            --sand: #e8dcc8;
+            --navy: #1e2d40;
+            --terra: #c4775a;
+            --muted: #6b6b6b
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased
+        }
+
+        /* MOBILE OVERLAY */
+        .mob {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--navy);
+            z-index: 300;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem
+        }
+
+        .mob.open {
+            display: flex
+        }
+
+        .mob a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--cream);
+            text-decoration: none;
+            transition: color .2s
+        }
+
+        .mob a:hover {
+            color: var(--terra)
+        }
+
+        .mob-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 5%;
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 2.5rem;
+            cursor: pointer
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 64px;
+            background: rgba(245, 240, 232, .9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(143, 170, 139, .2)
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--navy);
+            letter-spacing: .04em
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: .72rem;
+            font-weight: 500;
+            color: var(--navy);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-color .2s
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--terra)
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px
+        }
+
+        .burger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--navy);
+            display: block
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh
+        }
+
+        .hero-l {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 6% 5rem 5%;
+            background: var(--cream)
+        }
+
+        .hero-pre {
+            font-size: .68rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--terra);
+            font-weight: 500;
+            margin-bottom: 1.5rem
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--navy);
+            margin-bottom: 1.25rem
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.25rem
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: var(--sage-pale);
+            border: 1px solid var(--sage-light);
+            border-radius: 999px;
+            padding: .35rem .9rem;
+            font-size: .68rem;
+            font-weight: 500;
+            color: var(--navy);
+            letter-spacing: .05em;
+            margin-bottom: 2rem;
+            width: fit-content
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--terra);
+            color: #fff;
+            border: none;
+            padding: .9rem 2.2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: opacity .2s, transform .2s
+        }
+
+        .btn:hover {
+            opacity: .88;
+            transform: translateY(-1px)
+        }
+
+        /* HERO IMAGE — CSS gradient fallback always visible, real photo on top */
+        .hero-r {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #c8d8c6 0%, #d9c9ae 50%, #b8c8b5 100%);
+        }
+
+        .hero-r img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0;
+            transition: opacity .6s ease;
+        }
+
+        .hero-r img.loaded {
+            opacity: 1
+        }
+
+        .hero-photo-label {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--navy);
+            opacity: .4;
+            white-space: nowrap;
+            transition: opacity .4s;
+        }
+
+        .hero-r img.loaded~.hero-photo-label {
+            opacity: 0
+        }
+
+        /* IMAGE STRIP */
+        .img-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            height: 55vh
+        }
+
+        .img-strip-cell {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #d4e0d3 0%, #e8dcc8 100%);
+        }
+
+        .img-strip-cell:nth-child(2) {
+            background: linear-gradient(180deg, #8faa8b 0%, #6b8a68 100%)
+        }
+
+        .img-strip-cell:nth-child(3) {
+            background: linear-gradient(180deg, #2d3f5c 0%, #1e2d40 100%)
+        }
+
+        .img-strip-cell img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .img-strip-cell img.loaded {
+            opacity: 1
+        }
+
+        .img-strip-cell:hover img {
+            transform: scale(1.04)
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 65vh
+        }
+
+        .about-img {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #d4e0d3 0%, #e8dcc8 60%, #c4a882 100%);
+        }
+
+        .about-img img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity .6s ease;
+        }
+
+        .about-img img.loaded {
+            opacity: 1
+        }
+
+        .about-r {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 6%
+        }
+
+        .section-label {
+            font-size: .68rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--terra);
+            font-weight: 500;
+            display: block;
+            margin-bottom: .75rem
+        }
+
+        .rule {
+            width: 40px;
+            height: 2px;
+            background: var(--terra);
+            margin-bottom: 1.5rem
+        }
+
+        .about-r h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+            line-height: 1.2
+        }
+
+        .about-r p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem
+        }
+
+        /* FOCUS */
+        .focus {
+            background: var(--cream);
+            padding: 6rem 5%
+        }
+
+        .focus h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 300;
+            margin-bottom: 3rem
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            max-width: 900px
+        }
+
+        .focus-card {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-left: 3px solid var(--sage);
+            border-radius: 0 12px 12px 0;
+            padding: 1.75rem;
+            transition: transform .2s, box-shadow .2s, border-left-color .2s
+        }
+
+        .focus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 45, 64, .09);
+            border-left-color: var(--terra)
+        }
+
+        .focus-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: .4rem
+        }
+
+        .focus-card p {
+            font-size: .85rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.6
+        }
+
+        /* IMAGE BREAK */
+        .img-break {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e2d40 0%, #2d4a35 50%, #1a3028 100%);
+        }
+
+        .img-break img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity .6s ease;
+        }
+
+        .img-break img.loaded {
+            opacity: 1
+        }
+
+        .img-break-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 45, 64, .5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem
+        }
+
+        .img-break-overlay blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-style: italic;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.25;
+            max-width: 700px;
+            margin-bottom: 2rem
+        }
+
+        .lang-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(196, 119, 90, .3);
+            border: 1px solid rgba(196, 119, 90, .5);
+            border-radius: 999px;
+            padding: .5rem 1.3rem;
+            font-size: .75rem;
+            font-weight: 500;
+            color: #e8b49e;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        /* FEES */
+        .fees {
+            background: var(--sand);
+            padding: 6rem 5%;
+            text-align: center
+        }
+
+        .fees h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 300;
+            margin-bottom: .5rem
+        }
+
+        .fees-sub {
+            font-size: .85rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 3rem
+        }
+
+        .fees-cards {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem
+        }
+
+        .fee-card {
+            background: var(--cream);
+            border-radius: 14px;
+            padding: 2.5rem 3rem;
+            min-width: 220px;
+            border: 1px solid rgba(0, 0, 0, .06)
+        }
+
+        .fee-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            color: var(--navy);
+            line-height: 1
+        }
+
+        .fee-type {
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--terra);
+            font-weight: 500;
+            margin-top: .4rem
+        }
+
+        .fee-dur {
+            font-size: .82rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-top: .25rem
+        }
+
+        .fees-note {
+            font-size: .8rem;
+            color: var(--muted);
+            font-weight: 300
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--cream);
+            padding: 6rem 5%
+        }
+
+        .faq-inner {
+            max-width: 700px;
+            margin: 0 auto
+        }
+
+        .faq-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(30, 45, 64, .1)
+        }
+
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+            cursor: pointer;
+            gap: 1rem
+        }
+
+        .faq-q h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400
+        }
+
+        .faq-ico {
+            width: 26px;
+            height: 26px;
+            border: 1px solid rgba(30, 45, 64, .2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            font-weight: 200;
+            transition: background .2s, border-color .2s
+        }
+
+        .faq-item.open .faq-ico {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #fff
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease
+        }
+
+        .faq-a p {
+            font-size: .9rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.75;
+            padding-bottom: 1.25rem
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 120px
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--navy);
+            padding: 6rem 5%
+        }
+
+        .contact-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .contact-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--cream);
+            margin-bottom: .75rem;
+            line-height: 1.1
+        }
+
+        .contact-inner>p {
+            font-size: .9rem;
+            font-weight: 300;
+            color: rgba(245, 240, 232, .6);
+            margin-bottom: 2.5rem
+        }
+
+        .form-f {
+            margin-bottom: 1rem;
+            text-align: left
+        }
+
+        .form-f label {
+            display: block;
+            font-size: .65rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #e8b49e;
+            font-weight: 500;
+            margin-bottom: .4rem
+        }
+
+        .form-f input,
+        .form-f textarea,
+        .form-f select {
+            width: 100%;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(245, 240, 232, .15);
+            border-radius: 6px;
+            padding: .75rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .9rem;
+            font-weight: 300;
+            color: var(--cream);
+            outline: none;
+            transition: border-color .2s;
+            -webkit-appearance: none;
+            appearance: none
+        }
+
+        .form-f input::placeholder,
+        .form-f textarea::placeholder {
+            color: rgba(245, 240, 232, .25)
+        }
+
+        .form-f input:focus,
+        .form-f textarea:focus,
+        .form-f select:focus {
+            border-color: var(--sage)
+        }
+
+        .form-f select option {
+            background: var(--navy);
+            color: var(--cream)
+        }
+
+        .form-f textarea {
+            min-height: 90px;
+            resize: vertical
+        }
+
+        .btn-sub {
+            width: 100%;
+            background: var(--terra);
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: .5rem;
+            transition: opacity .2s
+        }
+
+        .btn-sub:hover {
+            opacity: .88
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            border-top: 2px solid var(--terra);
+            padding: 1.5rem 5%
+        }
+
+        .foot {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .75rem
+        }
+
+        .foot-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--cream);
+            letter-spacing: .04em
+        }
+
+        .foot-mid {
+            display: flex;
+            gap: 1.5rem;
+            font-size: .78rem;
+            font-weight: 300;
+            color: rgba(245, 240, 232, .5);
+            flex-wrap: wrap
+        }
+
+        .foot-mid a {
+            color: rgba(245, 240, 232, .5);
+            text-decoration: none;
+            transition: color .2s
+        }
+
+        .foot-mid a:hover {
+            color: #e8b49e
+        }
+
+        .foot-copy {
+            font-size: .7rem;
+            color: rgba(245, 240, 232, .3)
+        }
+
+        /* ANIMATIONS */
+        .fade {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease
+        }
+
+        .fade.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .fade.d1 {
+            transition-delay: .1s
+        }
+
+        .fade.d2 {
+            transition-delay: .2s
+        }
+
+        .fade.d3 {
+            transition-delay: .3s
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:860px) {
+            .nav-links {
+                display: none
+            }
+
+            .burger {
+                display: flex
+            }
+
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .hero-r {
+                height: 60vw;
+                min-height: 300px
+            }
+
+            .img-strip {
+                grid-template-columns: 1fr;
+                height: auto
+            }
+
+            .img-strip-cell {
+                height: 55vw
+            }
+
+            .about {
+                grid-template-columns: 1fr
+            }
+
+            .about-img {
+                height: 60vw
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr
+            }
+
+            .foot {
+                flex-direction: column;
+                text-align: center
+            }
+
+            .foot-mid {
+                justify-content: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mob" id="mob">
+        <button class="mob-close" onclick="closeMob()">×</button>
+        <a href="#about" onclick="closeMob()">About</a>
+        <a href="#focus" onclick="closeMob()">Focus</a>
+        <a href="#fees" onclick="closeMob()">Fees</a>
+        <a href="#contact" onclick="closeMob()">Contact</a>
+    </div>
+
+    <nav>
+        <a href="#" class="logo" aria-label="Stories in Context">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+                <path d="M2 13 Q6 6 13 10 Q20 14 24 8" stroke="#8faa8b" stroke-width="1.3" stroke-linecap="round" />
+                <path d="M2 17 Q7 11 13 15 Q19 19 24 13" stroke="#1e2d40" stroke-width="1.3" stroke-linecap="round" />
+                <path d="M2 21 Q8 15 13 19 Q18 23 24 17" stroke="#c4775a" stroke-width="1.3" stroke-linecap="round" />
+            </svg>
+            <span class="logo-text">Stories in Context</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#focus">Focus</a></li>
+            <li><a href="#fees">Fees</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="burger" onclick="openMob()" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-l">
+            <p class="hero-pre fade">A space to slow down and reflect</p>
+            <h1 class="fade d1">Therapy that meets you where you are.</h1>
+            <p class="hero-sub fade d2">Culturally responsive telehealth for individuals, couples &amp; families.</p>
+            <div class="badge fade d2">✦ &nbsp;LMFT · New York State</div>
+            <a href="#contact" class="btn fade d3">Book a Consultation</a>
+        </div>
+        <div class="hero-r">
+            <!-- Replace this img src with your therapist photo path e.g. src="photo.jpg" -->
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=900&q=80&fit=crop&crop=face"
+                alt="Therapist" crossorigin="anonymous" />
+            <span class="hero-photo-label">Therapist Photo</span>
+        </div>
+    </section>
+
+    <!-- IMAGE STRIP -->
+    <div class="img-strip">
+        <div class="img-strip-cell">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=80" alt="Soft interior light"
+                crossorigin="anonymous" />
+        </div>
+        <div class="img-strip-cell">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=80" alt="Forest pathway"
+                crossorigin="anonymous" />
+        </div>
+        <div class="img-strip-cell">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Mountain landscape"
+                crossorigin="anonymous" />
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80" alt="Warm calm interior"
+                crossorigin="anonymous" />
+        </div>
+        <div class="about-r">
+            <span class="section-label fade">About</span>
+            <div class="rule fade"></div>
+            <h2 class="fade d1">Your story deserves to be understood in its full context.</h2>
+            <p class="fade d2">I help people make sense of their experiences through a cultural lens — exploring
+                identity, relationships, and the patterns that shape our lives.</p>
+            <div class="badge fade d3">✦ &nbsp;Sessions in English &amp; Arabic · العربية</div>
+        </div>
+    </section>
+
+    <!-- AREAS OF FOCUS -->
+    <section class="focus" id="focus">
+        <span class="section-label fade">Areas of Focus</span>
+        <h2 class="fade d1">What we work through together</h2>
+        <div class="focus-grid">
+            <div class="focus-card fade d1">
+                <h3>Relationships &amp; Family</h3>
+                <p>Couples, family dynamics, and healing.</p>
+            </div>
+            <div class="focus-card fade d2">
+                <h3>Identity &amp; Transitions</h3>
+                <p>Immigration, culture, and life changes.</p>
+            </div>
+            <div class="focus-card fade d3">
+                <h3>Emotional Wellbeing</h3>
+                <p>Anxiety, depression, and self-esteem.</p>
+            </div>
+            <div class="focus-card fade d3">
+                <h3>Deeper Work</h3>
+                <p>Trauma, patterns, and personal growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE BREAK WITH QUOTE -->
+    <div class="img-break">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=80"
+            alt="Scenic nature landscape" crossorigin="anonymous" />
+        <div class="img-break-overlay">
+            <blockquote class="fade">"Your culture is not a footnote — it's the context."</blockquote>
+            <div class="lang-badge fade d1">✦ &nbsp;English · العربية</div>
+        </div>
+    </div>
+
+    <!-- FEES -->
+    <section class="fees" id="fees">
+        <span class="section-label fade">Fees</span>
+        <h2 class="fade d1">Simple, transparent pricing</h2>
+        <p class="fees-sub fade d1">Telehealth · New York State</p>
+        <div class="fees-cards fade d2">
+            <div class="fee-card">
+                <div class="fee-price">$200</div>
+                <div class="fee-type">Individual</div>
+                <div class="fee-dur">50 min</div>
+            </div>
+            <div class="fee-card">
+                <div class="fee-price">$225</div>
+                <div class="fee-type">Couples</div>
+                <div class="fee-dur">50 min</div>
+            </div>
+        </div>
+        <p class="fees-note fade d3">Out-of-network. Superbill available on request.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="faq-inner">
+            <h2 class="fade">Common questions</h2>
+            <div class="faq-item fade d1">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>What happens in the first session?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>We get to know each other — no pressure, no expectations.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d2">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>How long does therapy take?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Depends on your goals — we decide together as we go.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d3">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>Do you take insurance?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Out-of-network. Superbill provided on request.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <h2 class="fade">Ready to begin?</h2>
+            <p class="fade d1">I respond within 24–48 hours. All information is confidential.</p>
+            <div class="form-f fade d1"><label for="cname">Name</label><input type="text" id="cname"
+                    placeholder="Your name" /></div>
+            <div class="form-f fade d1"><label for="cemail">Email</label><input type="email" id="cemail"
+                    placeholder="your@email.com" /></div>
+            <div class="form-f fade d2"><label for="cservice">Service</label>
+                <select id="cservice">
+                    <option value="" disabled selected>Select...</option>
+                    <option>Individual Therapy</option>
+                    <option>Couples Therapy</option>
+                    <option>Family Therapy</option>
+                    <option>Not sure yet</option>
+                </select>
+            </div>
+            <div class="form-f fade d2"><label for="cmsg">Message</label><textarea id="cmsg"
+                    placeholder="What brings you here?"></textarea></div>
+            <button class="btn-sub fade d3" onclick="submitForm(this)">Send Message</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="foot">
+            <span class="foot-logo">Stories in Context</span>
+            <div class="foot-mid">
+                <a href="mailto:Khuzouzf@gmail.com">Khuzouzf@gmail.com</a>
+                <a href="tel:3314442275">331-444-2275</a>
+                <span>LMFT · NY · Telehealth</span>
+            </div>
+            <span class="foot-copy">© 2025 Stories in Context</span>
+        </div>
+    </footer>
+
+    <script>
+        function openMob() { document.getElementById('mob').classList.add('open'); document.body.style.overflow = 'hidden' }
+        function closeMob() { document.getElementById('mob').classList.remove('open'); document.body.style.overflow = '' }
+
+        function toggleFaq(el) {
+            const item = el.parentElement, ico = el.querySelector('.faq-ico'), open = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-ico').textContent = '+' });
+            if (!open) { item.classList.add('open'); ico.textContent = '−' }
+        }
+        document.querySelectorAll('.faq-q').forEach(el => {
+            el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(el) } })
+        });
+
+        // Fade-in on scroll
+        const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') }) }, { threshold: .1 });
+        document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+        setTimeout(() => document.querySelectorAll('.hero .fade').forEach(el => el.classList.add('in')), 80);
+
+        // Mark images as loaded so they fade in over the CSS gradient fallback
+        document.querySelectorAll('img').forEach(img => {
+            if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded') }
+            else { img.addEventListener('load', () => img.classList.add('loaded')) }
+        });
+
+        function submitForm(btn) { btn.textContent = 'Sent ✓'; btn.style.background = '#6b9e6b'; btn.disabled = true; setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.disabled = false }, 4000) }
+    </script>
+</body>
+
+</html>
