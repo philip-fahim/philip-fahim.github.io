@@ -102,9 +102,6 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 9px;
             text-decoration: none
         }
 
@@ -707,6 +704,28 @@
             margin-bottom: .4rem
         }
 
+        .form-f label .req {
+            color: var(--terra);
+            margin-left: .1em
+        }
+
+        .form-hint {
+            font-size: .85rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: rgba(245, 240, 232, .55);
+            margin: -.15rem 0 .55rem
+        }
+
+        .form-honey {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            overflow: hidden
+        }
+
         .form-f input,
         .form-f textarea,
         .form-f select {
@@ -901,11 +920,6 @@
 
     <nav>
         <a href="#" class="logo" aria-label="Stories in Context">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-                <path d="M2 13 Q6 6 13 10 Q20 14 24 8" stroke="#8faa8b" stroke-width="1.3" stroke-linecap="round" />
-                <path d="M2 17 Q7 11 13 15 Q19 19 24 13" stroke="#1e2d40" stroke-width="1.3" stroke-linecap="round" />
-                <path d="M2 21 Q8 15 13 19 Q18 23 24 17" stroke="#c4775a" stroke-width="1.3" stroke-linecap="round" />
-            </svg>
             <span class="logo-text">Stories in Context</span>
         </a>
         <ul class="nav-links">
@@ -1111,24 +1125,47 @@
     <!-- CONTACT -->
     <section class="contact" id="contact">
         <div class="contact-inner">
-            <h2 class="fade">Ready to begin?</h2>
+            <h2 class="fade">Contact me!</h2>
             <p class="fade d1">I respond within 24–48 hours. All information is confidential.</p>
-            <div class="form-f fade d1"><label for="cname">Name</label><input type="text" id="cname"
-                    placeholder="Your name" /></div>
-            <div class="form-f fade d1"><label for="cemail">Email</label><input type="email" id="cemail"
-                    placeholder="your@email.com" /></div>
-            <div class="form-f fade d2"><label for="cservice">Service</label>
-                <select id="cservice">
-                    <option value="" disabled selected>Select...</option>
-                    <option>Individual Therapy</option>
-                    <option>Couples Therapy</option>
-                    <option>Family Therapy</option>
-                    <option>Not sure yet</option>
-                </select>
-            </div>
-            <div class="form-f fade d2"><label for="cmsg">Message</label><textarea id="cmsg"
-                    placeholder="What brings you here?"></textarea></div>
-            <button class="btn-sub fade d3" onclick="submitForm(this)">Send Message</button>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="form-f fade d1"><label for="cname">First Name <span class="req"
+                            aria-hidden="true">*</span></label><input type="text" id="cname" name="first_name"
+                        placeholder="Your first name" required /></div>
+                <div class="form-f fade d1"><label for="clname">Last Name <span class="req"
+                            aria-hidden="true">*</span></label><input type="text" id="clname" name="last_name"
+                        placeholder="Your last name" required /></div>
+                <div class="form-f fade d1"><label for="cemail">Email <span class="req"
+                            aria-hidden="true">*</span></label><input type="email" id="cemail" name="email"
+                        placeholder="your@email.com" required /></div>
+                <div class="form-f fade d2"><label for="cservice">Service <span class="req"
+                            aria-hidden="true">*</span></label>
+                    <select id="cservice" name="service" required>
+                        <option value="" disabled selected>Select...</option>
+                        <option>Individual Therapy</option>
+                        <option>Couples Therapy</option>
+                        <option>Family Therapy</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+                <div class="form-f fade d2"><label for="cinsurance">Insurance <span class="req"
+                            aria-hidden="true">*</span></label>
+                    <select id="cinsurance" name="insurance" required>
+                        <option value="" disabled selected>Select...</option>
+                        <option>No Insurance (Out-of-Network)</option>
+                        <option>Aetna</option>
+                        <option>Anthem Blue Cross and Blue Shield New York</option>
+                        <option>Carelon Behavioral Health</option>
+                        <option>Cigna</option>
+                        <option>Providence Health Plan</option>
+                    </select>
+                </div>
+                <div class="form-f fade d2"><label for="cmsg">Message <span class="req"
+                            aria-hidden="true">*</span></label>
+                    <p class="form-hint" id="cmsg-hint">Please share a brief description of what brings you to therapy, and let me know your availability for scheduling an intake session.</p>
+                    <textarea id="cmsg" name="message" aria-describedby="cmsg-hint" required></textarea></div>
+                <button type="submit" class="btn-sub fade d3">Send Message</button>
+            </form>
         </div>
     </section>
 
@@ -1136,7 +1173,7 @@
         <div class="foot">
             <span class="foot-logo">Stories in Context</span>
             <div class="foot-mid">
-                <a href="mailto:Khuzouzf@gmail.com">Khuzouzf@gmail.com</a>
+                <a href="mailto:therapies@storiesincontext.com">therapies@storiesincontext.com</a>
                 <a href="tel:3314442275">331-444-2275</a>
                 <span>LMFT · NY · Telehealth</span>
             </div>
@@ -1168,7 +1205,49 @@
             else { img.addEventListener('load', () => img.classList.add('loaded')) }
         });
 
-        function submitForm(btn) { btn.textContent = 'Sent ✓'; btn.style.background = '#6b9e6b'; btn.disabled = true; setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.disabled = false }, 4000) }
+        async function submitForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('.btn-sub');
+            const originalText = btn.textContent;
+
+            if (form.querySelector('[name="_honey"]').value) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            const data = Object.fromEntries(new FormData(form).entries());
+            data._subject = 'New contact form submission — Stories in Context';
+            data._template = 'table';
+            data._captcha = 'false';
+
+            try {
+                const res = await fetch('https://formsubmit.co/ajax/therapies@storiesincontext.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (!res.ok || result.success !== 'true') throw new Error('submit failed');
+
+                btn.textContent = 'Sent ✓';
+                btn.style.background = '#6b9e6b';
+                form.reset();
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            } catch {
+                btn.textContent = 'Failed — try again';
+                btn.style.background = '#b85c4a';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            }
+        }
     </script>
 </body>
 
