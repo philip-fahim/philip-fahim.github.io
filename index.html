@@ -4,9 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Therapy in New York | Stories in Context</title>
     <meta name="description"
-        content="Stories in Context — Culturally responsive telehealth therapy in New York State. Sessions in English and Arabic." />
-    <title>Stories in Context | Therapy</title>
+        content="Online therapy across New York State for couples, families &amp; individuals. Culturally responsive, narrative-focused care with Farah Khuzouz, LMFT." />
+    <link rel="canonical" href="https://storiesincontext.com/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Farah Khuzouz, LMFT" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Stories in Context" />
+    <meta property="og:title" content="Online Therapy in New York | Stories in Context" />
+    <meta property="og:description"
+        content="Online therapy across New York State for couples, families &amp; individuals. Culturally responsive, narrative-focused care with Farah Khuzouz, LMFT." />
+    <meta property="og:url" content="https://storiesincontext.com/" />
+    <meta property="og:image" content="https://storiesincontext.com/profile.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Online Therapy in New York | Stories in Context" />
+    <meta name="twitter:description"
+        content="Online therapy across New York State for couples, families &amp; individuals with Farah Khuzouz, LMFT." />
+    <meta name="twitter:image" content="https://storiesincontext.com/profile.png" />
+
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -255,23 +276,14 @@
 
         /* IMAGE STRIP */
         .img-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             height: 55vh
         }
 
         .img-strip-cell {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(180deg, #d4e0d3 0%, #e8dcc8 100%);
-        }
-
-        .img-strip-cell:nth-child(2) {
-            background: linear-gradient(180deg, #8faa8b 0%, #6b8a68 100%)
-        }
-
-        .img-strip-cell:nth-child(3) {
-            background: linear-gradient(180deg, #2d3f5c 0%, #1e2d40 100%)
+            height: 100%;
+            background: linear-gradient(180deg, #2d3f5c 0%, #1e2d40 100%);
         }
 
         .img-strip-cell img {
@@ -425,9 +437,18 @@
 
         .focus-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.25rem;
-            max-width: 900px
+            max-width: 1100px
+        }
+
+        .focus-intro {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 720px;
+            margin-bottom: 2.5rem
         }
 
         .focus-card {
@@ -457,6 +478,67 @@
             font-weight: 300;
             color: var(--muted);
             line-height: 1.6
+        }
+
+        /* WHAT WE WORK ON */
+        .work {
+            background: var(--sage-pale);
+            padding: 6rem 5%
+        }
+
+        .work-inner {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .work-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 300;
+            margin-bottom: 1rem
+        }
+
+        .work-inner>p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 720px;
+            margin-bottom: 2rem
+        }
+
+        /* APPROACH */
+        .approach {
+            background: var(--cream);
+            padding: 6rem 5%
+        }
+
+        .approach-inner {
+            max-width: 760px;
+            margin: 0 auto
+        }
+
+        .approach-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.2
+        }
+
+        .approach-inner h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 2rem 0 .75rem
+        }
+
+        .approach-inner p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1.25rem
         }
 
         /* IMAGE BREAK */
@@ -537,7 +619,8 @@
             font-size: .85rem;
             color: var(--muted);
             font-weight: 300;
-            margin-bottom: 3rem
+            max-width: 700px;
+            margin: 0 auto 3rem
         }
 
         .fees-cards {
@@ -658,7 +741,7 @@
         }
 
         .faq-item.open .faq-a {
-            max-height: 120px
+            max-height: 600px
         }
 
         /* CONTACT */
@@ -906,6 +989,121 @@
             }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["MedicalBusiness", "ProfessionalService"],
+          "@id": "https://storiesincontext.com/#practice",
+          "name": "Stories in Context",
+          "url": "https://storiesincontext.com/",
+          "image": "https://storiesincontext.com/profile.png",
+          "email": "therapy@storiesincontext.com",
+          "telephone": "+1-331-444-2275",
+          "priceRange": "$200–$225",
+          "description": "Stories in Context is an online psychotherapy practice serving individuals, couples, and families across New York State, led by Farah Khuzouz, LMFT.",
+          "medicalSpecialty": "Psychiatric",
+          "availableLanguage": ["English", "Arabic"],
+          "areaServed": { "@type": "State", "name": "New York" },
+          "founder": { "@id": "https://storiesincontext.com/#farah" },
+          "employee": { "@id": "https://storiesincontext.com/#farah" },
+          "knowsAbout": [
+            "Couples therapy",
+            "Family therapy",
+            "Individual therapy",
+            "Narrative therapy",
+            "Culturally responsive therapy",
+            "Therapy for international students",
+            "Immigration and adjustment",
+            "Intergenerational trauma",
+            "Affairs and infidelity repair"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://storiesincontext.com/#farah",
+          "name": "Farah Khuzouz",
+          "honorificSuffix": "LMFT",
+          "jobTitle": "Licensed Marriage and Family Therapist",
+          "worksFor": { "@id": "https://storiesincontext.com/#practice" },
+          "knowsLanguage": ["English", "Arabic"],
+          "areaServed": { "@type": "State", "name": "New York" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://storiesincontext.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do you offer online couples therapy in New York?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Stories in Context offers online couples therapy to partners located anywhere in New York State, delivered entirely through secure telehealth video sessions. Couples are the practice's primary focus, and common areas of work include communication, intimacy, affairs and infidelity repair, and intercultural or interfaith relationships."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is narrative therapy?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Narrative therapy is an approach that sees you as the author of your own story rather than as a problem to be fixed. Together we look at the personal, cultural, and family narratives that shape how you see yourself, and we work to separate you from the problem so you can retell the parts of your story that no longer fit. It is collaborative, respectful, and grounded in your own values and context."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you take insurance?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Stories in Context is a private-pay practice and also accepts some insurance plans. If you have out-of-network benefits, I provide a monthly superbill you can submit to your insurer for possible partial or full reimbursement. Individual sessions are $200 and couples or family sessions are $225, each 50 minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you help with cultural or intergenerational family conflict?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Culturally responsive care is central to this practice, and I regularly work with families navigating intergenerational patterns, differing values across generations, and conflict tied to culture, migration, or faith. Sessions are available in English and Arabic."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you work with international students and immigrants?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. I support international students and immigrants adjusting to life in the United States, including challenges with identity, belonging, homesickness, academic pressure, and family expectations. All sessions are online and available to anyone located in New York State."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does therapy cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Individual therapy is $200 per 50-minute session and couples or family therapy is $225 per 50-minute session. Stories in Context accepts some insurance plans and provides superbills for clients with out-of-network benefits who wish to seek reimbursement."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where are sessions held?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Stories in Context is an online-only (telehealth) practice with no physical office. Sessions are held by secure video, so you can attend from anywhere you are located within New York State."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What happens in a first therapy session?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The first session is a relaxed conversation where we get to know each other, talk about what brings you in, and see whether we are a good fit — with no pressure or obligation to continue. You are also welcome to start with a free 15-minute consultation call beforehand."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -913,8 +1111,10 @@
     <div class="mob" id="mob">
         <button class="mob-close" onclick="closeMob()">×</button>
         <a href="#about" onclick="closeMob()">About</a>
-        <a href="#focus" onclick="closeMob()">Focus</a>
+        <a href="#services" onclick="closeMob()">Services</a>
+        <a href="#approach" onclick="closeMob()">Approach</a>
         <a href="#fees" onclick="closeMob()">Fees</a>
+        <a href="#faq" onclick="closeMob()">FAQ</a>
         <a href="#contact" onclick="closeMob()">Contact</a>
     </div>
 
@@ -924,8 +1124,10 @@
         </a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#focus">Focus</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#approach">Approach</a></li>
             <li><a href="#fees">Fees</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="burger" onclick="openMob()" aria-label="Open menu">
@@ -936,11 +1138,13 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-l">
-            <p class="hero-pre fade">A space to slow down and reflect</p>
-            <h1 class="fade d1">Therapy that meets you where you are.</h1>
-            <p class="hero-sub fade d2">Culturally responsive telehealth for individuals, couples &amp; families.</p>
-            <div class="badge fade d2">✦ &nbsp;LMFT · New York State</div>
-            <a href="#contact" class="btn fade d3">Book a Consultation</a>
+            <p class="hero-pre fade">Online therapy for anyone located in New York State</p>
+            <h1 class="fade d1">Online therapy in New York for couples, families &amp; individuals.</h1>
+            <p class="hero-sub fade d2">Stories in Context is an online psychotherapy practice serving couples,
+                families, and individuals across New York State, led by Farah Khuzouz, LMFT. Culturally responsive,
+                narrative-focused care by secure video — from wherever you are.</p>
+            <div class="badge fade d2">✦ &nbsp;Marriage &amp; Family Therapist · Telehealth · New York State</div>
+            <a href="#contact" class="btn fade d3">Book a free 15-minute consultation</a>
         </div>
         <div class="hero-r">
             <img src="https://images.unsplash.com/photo-1750859479417-54383840d7e7?w=900&q=80&fit=crop"
@@ -950,15 +1154,6 @@
 
     <!-- IMAGE STRIP -->
     <div class="img-strip">
-        <div class="img-strip-cell">
-            <img src="https://images.unsplash.com/photo-1762380371803-0eb4404cf049?w=700&q=80&fit=crop"
-                alt="Arabic calligraphy and geometric zellige tilework in Marrakech" crossorigin="anonymous" />
-        </div>
-        <div class="img-strip-cell">
-            <img src="https://images.unsplash.com/photo-1763377220365-0277dece6fb8?w=700&q=80&fit=crop"
-                alt="Traditional Omani mashrabiya balconies along the Muttrah Corniche, Muscat"
-                crossorigin="anonymous" />
-        </div>
         <div class="img-strip-cell">
             <img src="https://images.unsplash.com/photo-1761940546675-dda512e218db?w=700&q=80&fit=crop"
                 alt="Carved plaster arabesques and cedar mashrabiya at Dar El Bacha, Marrakech"
@@ -970,20 +1165,26 @@
     <section class="about" id="about">
         <div class="about-top">
             <div class="about-img">
-                <img src="profile.png" alt="Marriage and Family Therapist" width="489" height="539" />
+                <img src="profile.png"
+                    alt="Farah Khuzouz, LMFT, online marriage and family therapist serving New York State"
+                    width="489" height="539" />
             </div>
             <div class="about-r">
-                <span class="section-label fade">About Me</span>
+                <span class="section-label fade">About Farah Khuzouz, LMFT</span>
                 <div class="rule fade"></div>
                 <h2 class="fade d1">Your story deserves to be understood in its full context.</h2>
-                <p class="fade d2">I am a Marriage and Family Therapist in New York State. I work with individuals,
-                    couples, adolescents, and families navigating life's most complex and tender moments — whether
-                    that's trauma, intrapersonal and/or interpersonal conflict, grief, identity exploration, or major
-                    life transitions.</p>
+                <p class="fade d2">I'm Farah Khuzouz, a Licensed Marriage and Family Therapist (LMFT) in New York
+                    State and the therapist behind Stories in Context. I offer online therapy to couples, families, and
+                    individuals — including adolescents, international students, and immigrants — located anywhere in
+                    New York State.</p>
+                <p class="fade d2">I work with people navigating relationships, identity, cultural background, life
+                    transitions, anxiety, depression, trauma, and intergenerational patterns. My approach is rooted in
+                    empathy and narrative therapy: the belief that you are the author of your own story, and that your
+                    culture, family, and relationships are essential context — never a footnote.</p>
                 <p class="fade d2">My professional experience includes university counseling centers, outpatient
-                    clinics, crisis centers, school-based settings, and foster care. My approach is rooted in empathy
-                    and a sincere, humane connection. My goal is to create a healing space that helps individuals,
-                    couples, and families navigate challenges and find resilience amidst struggle.</p>
+                    clinics, crisis centers, school-based settings, and foster care. My goal is to create a warm,
+                    culturally responsive space where couples, families, and individuals can navigate challenges and
+                    find resilience together.</p>
                 <div class="badge fade d3">✦ &nbsp;Sessions in English &amp; Arabic · العربية</div>
             </div>
         </div>
@@ -992,17 +1193,18 @@
                 <h3>Client Focus</h3>
                 <ul class="tag-list">
                     <li>Couples</li>
-                    <li>Individuals</li>
                     <li>Families</li>
+                    <li>Individuals</li>
+                    <li>Adolescents</li>
+                    <li>International Students</li>
+                    <li>Immigrants</li>
+                    <li>Cross-cultural couples</li>
+                    <li>Interfaith couples/families</li>
                     <li>Adults</li>
                     <li>Young Adults</li>
                     <li>College Students</li>
-                    <li>International Students</li>
                     <li>Elders</li>
                     <li>Caregivers</li>
-                    <li>Adolescents</li>
-                    <li>Cross-cultural couples</li>
-                    <li>Interfaith couples/families</li>
                 </ul>
             </div>
             <div class="about-block fade d2">
@@ -1034,45 +1236,101 @@
         </div>
     </section>
 
-    <!-- AREAS OF FOCUS -->
-    <section class="focus" id="focus">
-        <span class="section-label fade">Areas of Focus</span>
-        <h2 class="fade d1">What we work through together</h2>
+    <!-- SERVICES -->
+    <section class="focus" id="services">
+        <span class="section-label fade">Services</span>
+        <h2 class="fade d1">Online therapy services across New York State</h2>
+        <p class="focus-intro fade d1">Every session is held online by secure video, so you can take part from
+            anywhere you're located in New York State. Here's how we can work together.</p>
         <div class="focus-grid">
             <div class="focus-card fade d1">
-                <h3>Relationships &amp; Family</h3>
-                <p>Couples, family dynamics, and healing.</p>
+                <h3>Couples Therapy</h3>
+                <p>Online couples therapy in New York for communication and intimacy, affairs and infidelity repair,
+                    and intercultural or interfaith relationships.</p>
             </div>
             <div class="focus-card fade d2">
-                <h3>Identity &amp; Transitions</h3>
-                <p>Immigration, culture, and life changes.</p>
+                <h3>Family Therapy</h3>
+                <p>Online family therapy for intergenerational patterns, cultural and value differences, parenting,
+                    conflict, separation, divorce, and estrangement.</p>
             </div>
             <div class="focus-card fade d3">
-                <h3>Emotional Wellbeing</h3>
-                <p>Anxiety, depression, and self-esteem.</p>
+                <h3>Individual Therapy</h3>
+                <p>Support for adults navigating anxiety, depression, trauma, identity, relationships, and major life
+                    transitions.</p>
             </div>
             <div class="focus-card fade d3">
-                <h3>Deeper Work</h3>
-                <p>Trauma, patterns, and personal growth.</p>
+                <h3>Adolescents &amp; Students</h3>
+                <p>Therapy for adolescents, international students, and immigrants working through identity,
+                    belonging, adjustment, and family expectations.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE WORK ON -->
+    <section class="work">
+        <div class="work-inner">
+            <span class="section-label fade">What We Work On</span>
+            <h2 class="fade d1">Where therapy can help</h2>
+            <p class="fade d1">Whatever brings you in, we'll make sense of it within your full context — your
+                relationships, culture, family history, and the moment you're living through.</p>
+            <ul class="tag-list fade d2">
+                <li>Identity</li>
+                <li>Relationships</li>
+                <li>Cultural background</li>
+                <li>Life transitions</li>
+                <li>Anxiety</li>
+                <li>Depression</li>
+                <li>Trauma</li>
+                <li>Intergenerational patterns</li>
+                <li>Communication issues</li>
+                <li>Affairs &amp; infidelity repair</li>
+                <li>Parenting</li>
+                <li>Divorce &amp; separation</li>
+                <li>Estrangement</li>
+                <li>Immigration &amp; adjustment</li>
+                <li>International student challenges</li>
+            </ul>
         </div>
     </section>
 
     <!-- IMAGE BREAK WITH QUOTE -->
     <div class="img-break">
-        <img src="https://images.unsplash.com/photo-1747682813789-71c9b46a392a?w=1600&q=80&fit=crop"
-            alt="Arched interior of Sultan Qaboos Grand Mosque, Muscat, Oman" crossorigin="anonymous" />
+        <img src="grandparents-book.png"
+            alt="Open family photo album with vintage photographs of multiple generations on a wooden table" />
         <div class="img-break-overlay">
-            <blockquote class="fade">"Your culture is not a footnote — it's the context."</blockquote>
-            <div class="lang-badge fade d1">✦ &nbsp;English · العربية</div>
+            <blockquote class="fade">"Your culture is not a footnote, it's the context."</blockquote>
         </div>
     </div>
 
+    <!-- APPROACH -->
+    <section class="approach" id="approach">
+        <div class="approach-inner">
+            <span class="section-label fade">My Approach</span>
+            <h2 class="fade d1">What is narrative therapy?</h2>
+            <p class="fade d1">Narrative therapy is a collaborative, respectful approach that sees you as the author
+                of your own story — not as a problem to be fixed. The name Stories in Context comes from this idea:
+                that the way you understand yourself is shaped by the personal, cultural, and family narratives you
+                carry.</p>
+            <p class="fade d2">In plain terms, we slow down and look at the stories you've come to believe about who
+                you are and what's possible. We gently separate you from the problem, notice the values and strengths
+                that are already there, and work together to retell the chapters that no longer fit. Your culture,
+                family, and relationships aren't background details — they're the context that makes your story make
+                sense.</p>
+            <h3 class="fade d2">Culturally responsive by design</h3>
+            <p class="fade d2">As a culturally responsive Marriage and Family Therapist, I hold space for the
+                languages, values, faith, and family systems you come from. Sessions are available in English and
+                Arabic, and you're always the expert on your own life and culture.</p>
+        </div>
+    </section>
+
     <!-- FEES -->
     <section class="fees" id="fees">
-        <span class="section-label fade">Fees</span>
-        <h2 class="fade d1">Simple, transparent pricing</h2>
-        <p class="fees-sub fade d1">Telehealth · New York State</p>
+        <span class="section-label fade">Fees &amp; Insurance</span>
+        <h2 class="fade d1">Fees &amp; insurance</h2>
+        <p class="fees-sub fade d1">Stories in Context is a private-pay practice and also accepts some insurance
+            plans. If your plan includes out-of-network benefits, you may be eligible for partial or full
+            reimbursement. On request, I can provide a superbill or the documentation you need to submit to your
+            insurance for possible reimbursement.</p>
         <div class="fees-cards fade d2">
             <div class="fee-card">
                 <div class="fee-price">$200</div>
@@ -1081,7 +1339,7 @@
             </div>
             <div class="fee-card">
                 <div class="fee-price">$225</div>
-                <div class="fee-type">Couples</div>
+                <div class="fee-type">Couples & Families</div>
                 <div class="fee-dur">50 min</div>
             </div>
         </div>
@@ -1089,34 +1347,98 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq">
+    <section class="faq" id="faq">
         <div class="faq-inner">
-            <h2 class="fade">Common questions</h2>
+            <h2 class="fade">Frequently asked questions</h2>
             <div class="faq-item fade d1">
                 <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
-                    <h3>What happens in the first session?</h3>
+                    <h3>Do you offer online couples therapy in New York?</h3>
                     <div class="faq-ico">+</div>
                 </div>
                 <div class="faq-a">
-                    <p>We get to know each other — no pressure, no expectations.</p>
+                    <p>Yes. Stories in Context offers online couples therapy to partners located anywhere in New York
+                        State, delivered entirely through secure telehealth video sessions. Couples are the practice's
+                        primary focus, and common areas of work include communication, intimacy, affairs and
+                        infidelity repair, and intercultural or interfaith relationships.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d1">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>What is narrative therapy?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Narrative therapy is an approach that sees you as the author of your own story rather than as a
+                        problem to be fixed. Together we look at the personal, cultural, and family narratives that
+                        shape how you see yourself, and we work to separate you from the problem so you can retell the
+                        parts of your story that no longer fit. It's collaborative, respectful, and grounded in your
+                        own values and context.</p>
                 </div>
             </div>
             <div class="faq-item fade d2">
-                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
-                    <h3>How long does therapy take?</h3>
-                    <div class="faq-ico">+</div>
-                </div>
-                <div class="faq-a">
-                    <p>Depends on your goals — we decide together as we go.</p>
-                </div>
-            </div>
-            <div class="faq-item fade d3">
                 <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
                     <h3>Do you take insurance?</h3>
                     <div class="faq-ico">+</div>
                 </div>
                 <div class="faq-a">
-                    <p>Out-of-network. Superbill provided on request.</p>
+                    <p>Stories in Context is a private-pay practice and also accepts some insurance plans. If you have
+                        out-of-network benefits, I provide a monthly superbill you can submit to your insurer for
+                        possible partial or full reimbursement. Individual sessions are $200 and couples or family
+                        sessions are $225, each 50 minutes.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d2">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>Can you help with cultural or intergenerational family conflict?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Yes. Culturally responsive care is central to this practice, and I regularly work with families
+                        navigating intergenerational patterns, differing values across generations, and conflict tied
+                        to culture, migration, or faith. Sessions are available in English and Arabic.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d2">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>Do you work with international students and immigrants?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Yes. I support international students and immigrants adjusting to life in the United States,
+                        including challenges with identity, belonging, homesickness, academic pressure, and family
+                        expectations. All sessions are online and available to anyone located in New York State.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d3">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>How much does therapy cost?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Individual therapy is $200 per 50-minute session and couples or family therapy is $225 per
+                        50-minute session. Stories in Context accepts some insurance plans and provides superbills for
+                        clients with out-of-network benefits who wish to seek reimbursement.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d3">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>Where are sessions held?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>Stories in Context is an online-only (telehealth) practice with no physical office. Sessions are
+                        held by secure video, so you can attend from anywhere you are located within New York State.</p>
+                </div>
+            </div>
+            <div class="faq-item fade d3">
+                <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
+                    <h3>What happens in a first therapy session?</h3>
+                    <div class="faq-ico">+</div>
+                </div>
+                <div class="faq-a">
+                    <p>The first session is a relaxed conversation where we get to know each other, talk about what
+                        brings you in, and see whether we're a good fit — with no pressure or obligation to continue.
+                        You're also welcome to start with a free 15-minute consultation call beforehand.</p>
                 </div>
             </div>
         </div>
@@ -1125,10 +1447,13 @@
     <!-- CONTACT -->
     <section class="contact" id="contact">
         <div class="contact-inner">
-            <h2 class="fade">Contact me!</h2>
-            <p class="fade d1">I respond within 24–48 hours. All information is confidential.</p>
+            <h2 class="fade">Book a free 15-minute consultation</h2>
+            <p class="fade d1">Starting therapy can feel like a big step, so there's no pressure here. Send a note
+                below to set up a free 15-minute consultation and see if we're a good fit. I respond within 24–48
+                hours, and everything you share is confidential.</p>
             <form id="contactForm" onsubmit="submitForm(event)">
-                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off"
+                    aria-hidden="true" />
                 <div class="form-f fade d1"><label for="cname">First Name <span class="req"
                             aria-hidden="true">*</span></label><input type="text" id="cname" name="first_name"
                         placeholder="Your first name" required /></div>
@@ -1162,9 +1487,11 @@
                 </div>
                 <div class="form-f fade d2"><label for="cmsg">Message <span class="req"
                             aria-hidden="true">*</span></label>
-                    <p class="form-hint" id="cmsg-hint">Please share a brief description of what brings you to therapy, and let me know your availability for scheduling an intake session.</p>
-                    <textarea id="cmsg" name="message" aria-describedby="cmsg-hint" required></textarea></div>
-                <button type="submit" class="btn-sub fade d3">Send Message</button>
+                    <p class="form-hint" id="cmsg-hint">Please share a brief description of what brings you to therapy,
+                        and let me know your availability for scheduling an intake session.</p>
+                    <textarea id="cmsg" name="message" aria-describedby="cmsg-hint" required></textarea>
+                </div>
+                <button type="submit" class="btn-sub fade d3">Request my free consultation</button>
             </form>
         </div>
     </section>
@@ -1173,9 +1500,9 @@
         <div class="foot">
             <span class="foot-logo">Stories in Context</span>
             <div class="foot-mid">
-                <a href="mailto:therapies@storiesincontext.com">therapies@storiesincontext.com</a>
+                <a href="mailto:therapy@storiesincontext.com">therapy@storiesincontext.com</a>
                 <a href="tel:3314442275">331-444-2275</a>
-                <span>LMFT · NY · Telehealth</span>
+                <span>Farah Khuzouz, LMFT · New York · Telehealth</span>
             </div>
             <span class="foot-copy">© 2025 Stories in Context</span>
         </div>
@@ -1222,7 +1549,7 @@
             data._captcha = 'false';
 
             try {
-                const res = await fetch('https://formsubmit.co/ajax/therapies@storiesincontext.com', {
+                const res = await fetch('https://formsubmit.co/ajax/therapy@storiesincontext.com', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(data)
