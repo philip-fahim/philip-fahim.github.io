@@ -31,6 +31,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Inject Web3Forms access key
+        env:
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+        run: |
+          if [ -z "$WEB3FORMS_ACCESS_KEY" ]; then
+            echo "Missing repository secret WEB3FORMS_ACCESS_KEY" >&2
+            exit 1
+          fi
+          printf 'window.__ENV__ = { WEB3FORMS_ACCESS_KEY: "%s" };\n' "$WEB3FORMS_ACCESS_KEY" > env.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

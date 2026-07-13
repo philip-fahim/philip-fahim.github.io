@@ -1554,8 +1554,8 @@
                 below to set up a free 15-minute consultation and see if we're a good fit. I respond within 24–48
                 hours, and everything you share is confidential.</p>
             <form id="contactForm" onsubmit="submitForm(event)">
-                <!-- Get a free access key at https://web3forms.com (enter therapy@storiesincontext.com) -->
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <!-- access_key is injected from WEB3FORMS_ACCESS_KEY via env.js (see .env / deploy workflow) -->
+                <input type="hidden" name="access_key" value="" />
                 <input type="hidden" name="subject" value="New consultation request — Stories in Context" />
                 <input type="hidden" name="from_name" value="Stories in Context Website" />
                 <input type="checkbox" name="botcheck" class="form-honey" tabindex="-1" autocomplete="off"
@@ -1614,6 +1614,7 @@
         </div>
     </footer>
 
+    <script src="env.js"></script>
     <script>
         function openMob() { document.getElementById('mob').classList.add('open'); document.body.style.overflow = 'hidden' }
         function closeMob() { document.getElementById('mob').classList.remove('open'); document.body.style.overflow = '' }
@@ -1638,6 +1639,11 @@
             else { img.addEventListener('load', () => img.classList.add('loaded')) }
         });
 
+        const accessKeyInput = document.querySelector('#contactForm [name="access_key"]');
+        if (accessKeyInput && window.__ENV__?.WEB3FORMS_ACCESS_KEY) {
+            accessKeyInput.value = window.__ENV__.WEB3FORMS_ACCESS_KEY;
+        }
+
         async function submitForm(e) {
             e.preventDefault();
             const form = e.target;
@@ -1646,10 +1652,22 @@
 
             if (form.querySelector('[name="botcheck"]').checked) return;
 
+            const accessKey = window.__ENV__?.WEB3FORMS_ACCESS_KEY;
+            if (!accessKey) {
+                btn.textContent = 'Form unavailable';
+                btn.style.background = '#b85c4a';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                }, 4000);
+                return;
+            }
+
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
             const data = Object.fromEntries(new FormData(form).entries());
+            data.access_key = accessKey;
             delete data.botcheck;
 
             try {
@@ -1664,6 +1682,7 @@
                 btn.textContent = 'Sent ✓';
                 btn.style.background = '#6b9e6b';
                 form.reset();
+                if (accessKeyInput) accessKeyInput.value = accessKey;
                 setTimeout(() => {
                     btn.textContent = originalText;
                     btn.style.background = '';
