@@ -1554,7 +1554,11 @@
                 below to set up a free 15-minute consultation and see if we're a good fit. I respond within 24–48
                 hours, and everything you share is confidential.</p>
             <form id="contactForm" onsubmit="submitForm(event)">
-                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off"
+                <!-- Get a free access key at https://web3forms.com (enter therapy@storiesincontext.com) -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="subject" value="New consultation request — Stories in Context" />
+                <input type="hidden" name="from_name" value="Stories in Context Website" />
+                <input type="checkbox" name="botcheck" class="form-honey" tabindex="-1" autocomplete="off"
                     aria-hidden="true" />
                 <div class="form-f fade d1"><label for="cname">First Name <span class="req"
                             aria-hidden="true">*</span></label><input type="text" id="cname" name="first_name"
@@ -1640,24 +1644,22 @@
             const btn = form.querySelector('.btn-sub');
             const originalText = btn.textContent;
 
-            if (form.querySelector('[name="_honey"]').value) return;
+            if (form.querySelector('[name="botcheck"]').checked) return;
 
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
             const data = Object.fromEntries(new FormData(form).entries());
-            data._subject = 'New contact form submission — Stories in Context';
-            data._template = 'table';
-            data._captcha = 'false';
+            delete data.botcheck;
 
             try {
-                const res = await fetch('https://formsubmit.co/ajax/therapy@storiesincontext.com', {
+                const res = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(data)
                 });
                 const result = await res.json();
-                if (!res.ok || result.success !== 'true') throw new Error('submit failed');
+                if (!res.ok || !result.success) throw new Error(result.message || 'submit failed');
 
                 btn.textContent = 'Sent ✓';
                 btn.style.background = '#6b9e6b';
