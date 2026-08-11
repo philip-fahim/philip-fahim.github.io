@@ -687,11 +687,14 @@
             font-weight: 300
         }
 
-        .thrizer-embed {
-            margin-top: 2.5rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto
+        .fees-badge {
+            margin-top: 2rem
+        }
+
+        .fees-badge a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center
         }
 
         /* FAQ */
@@ -935,6 +938,19 @@
 
         .foot-mid a:hover {
             color: #e8b49e
+        }
+
+        .contact-badge {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center
+        }
+
+        .mentaya-badge img {
+            display: block;
+            height: auto;
+            max-height: 120px;
+            max-width: min(100%, 260px)
         }
 
         .foot-copy {
@@ -1429,10 +1445,11 @@
             </div>
         </div>
         <p class="fees-note fade d3">Out-of-network. Superbill available on request.</p>
-        <div class="thrizer-embed fade d3">
-            <script src="https://eligibility.thrizer.com/embed.js"
-                data-src="https://eligibility.thrizer.com/facility/thrizers3oht?type=iframe"
-                data-title="Check Your Insurance Benefits" crossorigin="anonymous"></script>
+        <div class="fees-badge fade d3">
+            <a href="https://mentaya.com" target="_blank" rel="noopener noreferrer" class="mentaya-badge">
+                <img src="https://storage.googleapis.com/zaya-health.appspot.com/public-images/mentaya_partner_badge_light.png"
+                    alt="Mentaya Badge" />
+            </a>
         </div>
     </section>
 
@@ -1611,6 +1628,12 @@
                 </div>
                 <button type="submit" class="btn-sub fade d3">Request my free consultation</button>
             </form>
+            <div class="contact-badge fade d3">
+                <!-- Professional verification provided by Psychology Today -->
+                <a href="https://www.psychologytoday.com/profile/1600954" class="sx-verified-seal"></a>
+                <script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="14" data-id="1600954" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy8xNC9wcm9maWxlLzE2MDA5NTQ/Y2FsbGJhY2s9c3hjYWxsYmFjaw=="></script>
+                <!-- End Verification -->
+            </div>
         </div>
     </section>
 
@@ -1622,10 +1645,6 @@
                 <a href="tel:3314442275">331-444-2275</a>
                 <span>Farah Khuzouz, LMFT · Arabic-speaking therapy · New York · Telehealth</span>
             </div>
-            <!-- Professional verification provided by Psychology Today -->
-            <a href="https://www.psychologytoday.com/profile/1600954" class="sx-verified-seal"></a>
-            <script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="13" data-id="1600954" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy8xMy9wcm9maWxlLzE2MDA5NTQ/Y2FsbGJhY2s9c3hjYWxsYmFjaw=="></script>
-            <!-- End Verification -->
             <span class="foot-copy">© 2026 Stories in Context</span>
         </div>
     </footer>
