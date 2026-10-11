@@ -13,6 +13,10 @@
     <link rel="amphtml" href="https://storiesincontext.com/amp.html" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Farah Khuzouz, LMFT" />
+    <!-- Practical CSP for a static clinic site on GitHub Pages (no custom HTTP headers).
+         Allows current fonts, Web3Forms, inline styles/scripts/handlers used by this page. -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self' 'unsafe-inline'; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; upgrade-insecure-requests" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -1179,7 +1183,7 @@
             },
             {
               "@type": "Question",
-              "name": "What is narrative therapy?",
+              "name": "How does narrative therapy work in this practice?",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Narrative therapy is an approach that sees you as the author of your own story rather than as a problem to be fixed. Together we look at the personal, cultural, and family narratives that shape how you see yourself, and we work to separate you from the problem so you can retell the parts of your story that no longer fit. It is collaborative, respectful, and grounded in your own values and context."
@@ -1477,7 +1481,7 @@
     <section class="approach" id="approach">
         <div class="approach-inner">
             <span class="section-label fade">My Approach</span>
-            <h2 class="fade d1">What is narrative therapy?</h2>
+            <h2 class="fade d1">A narrative approach to therapy</h2>
             <p class="fade d1">Narrative therapy is a collaborative, respectful approach that sees you as the author
                 of your own story — not as a problem to be fixed. The name Stories in Context comes from this idea:
                 that the way you understand yourself is shaped by the personal, cultural, and family narratives you
@@ -1568,7 +1572,7 @@
             </div>
             <div class="faq-item fade d1">
                 <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">
-                    <h3>What is narrative therapy?</h3>
+                    <h3>How does narrative therapy work in this practice?</h3>
                     <div class="faq-ico">+</div>
                 </div>
                 <div class="faq-a">

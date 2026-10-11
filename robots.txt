@@ -1,0 +1,5 @@
+# Stories in Context — public therapy practice site
+User-agent: *
+Allow: /
+
+Sitemap: https://storiesincontext.com/sitemap.xml
