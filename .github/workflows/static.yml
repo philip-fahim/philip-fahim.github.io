@@ -40,6 +40,18 @@ jobs:
             exit 1
           fi
           printf 'window.__ENV__ = { WEB3FORMS_ACCESS_KEY: "%s" };\n' "$WEB3FORMS_ACCESS_KEY" > env.js
+          # AMP has no custom JS, so bake the key into amp.html at deploy time
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          key = os.environ["WEB3FORMS_ACCESS_KEY"]
+          path = Path("amp.html")
+          text = path.read_text()
+          if "__WEB3FORMS_ACCESS_KEY__" not in text:
+              raise SystemExit("amp.html missing __WEB3FORMS_ACCESS_KEY__ placeholder")
+          path.write_text(text.replace("__WEB3FORMS_ACCESS_KEY__", key))
+          print("Injected Web3Forms key into amp.html")
+          PY
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

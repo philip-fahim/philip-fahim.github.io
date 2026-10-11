@@ -10,6 +10,7 @@
     <meta name="keywords"
         content="Arabic-speaking therapist New York, Arab therapist NYC, SWANA therapist, culturally responsive therapy, narrative therapy New York, online couples therapy New York, interfaith couples counseling, Muslim couples therapy, therapy for international students, immigrant mental health, Farah Khuzouz LMFT" />
     <link rel="canonical" href="https://storiesincontext.com/" />
+    <link rel="amphtml" href="https://storiesincontext.com/amp.html" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Farah Khuzouz, LMFT" />
 
@@ -20,7 +21,7 @@
     <meta property="og:description"
         content="Arabic-speaking, culturally responsive online therapy across New York for couples, families &amp; individuals. Narrative-focused care for Arab, SWANA &amp; interfaith communities — sessions in English &amp; Arabic with Farah Khuzouz, LMFT." />
     <meta property="og:url" content="https://storiesincontext.com/" />
-    <meta property="og:image" content="https://storiesincontext.com/profile.png" />
+    <meta property="og:image" content="https://storiesincontext.com/images/profile.jpg" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ar_AR" />
 
@@ -29,15 +30,26 @@
     <meta name="twitter:title" content="Arabic-Speaking Therapist in New York | Stories in Context" />
     <meta name="twitter:description"
         content="Arabic-speaking, culturally responsive online therapy across New York for couples, families &amp; individuals — sessions in English &amp; Arabic with Farah Khuzouz, LMFT." />
-    <meta name="twitter:image" content="https://storiesincontext.com/profile.png" />
+    <meta name="twitter:image" content="https://storiesincontext.com/images/profile.jpg" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-blocking font load; fewer weights = less CSS/font bytes -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+            rel="stylesheet" />
+    </noscript>
+    <!-- Preload LCP hero only when it is shown (desktop) -->
+    <link rel="preload" as="image" href="images/hero.webp" type="image/webp" media="(min-width: 861px)"
+        fetchpriority="high" />
 
     <!-- ============================================================
          MEASUREMENT — add these once you have accounts (currently none):
@@ -277,6 +289,20 @@
             background: linear-gradient(160deg, #c8d8c6 0%, #d9c9ae 50%, #b8c8b5 100%);
         }
 
+        .hero-r picture,
+        .img-strip-cell picture,
+        .about-img picture,
+        .img-break picture {
+            display: block;
+            width: 100%;
+            height: 100%
+        }
+
+        .hero-r picture {
+            position: absolute;
+            inset: 0
+        }
+
         .hero-r img {
             position: absolute;
             inset: 0;
@@ -294,7 +320,9 @@
 
         /* IMAGE STRIP */
         .img-strip {
-            height: 55vh
+            height: 55vh;
+            content-visibility: auto;
+            contain-intrinsic-size: 55vh
         }
 
         .img-strip-cell {
@@ -302,6 +330,11 @@
             overflow: hidden;
             height: 100%;
             background: linear-gradient(180deg, #2d3f5c 0%, #1e2d40 100%);
+        }
+
+        .img-strip-cell picture {
+            position: absolute;
+            inset: 0
         }
 
         .img-strip-cell img {
@@ -346,6 +379,11 @@
             aspect-ratio: 489 / 539;
         }
 
+        .about-img picture {
+            position: absolute;
+            inset: 0
+        }
+
         .about-img img {
             position: absolute;
             inset: 0;
@@ -359,6 +397,25 @@
 
         .about-img img.loaded {
             opacity: 1
+        }
+
+        /* Skip rendering work for below-the-fold sections until near viewport */
+        .about,
+        .work,
+        .focus,
+        .img-break,
+        .approach,
+        .fees,
+        .faq,
+        .contact,
+        footer {
+            content-visibility: auto;
+            contain-intrinsic-size: 800px
+        }
+
+        .img-break picture {
+            position: absolute;
+            inset: 0
         }
 
         .about-r {
@@ -1048,10 +1105,9 @@
           "@id": "https://storiesincontext.com/#practice",
           "name": "Stories in Context",
           "url": "https://storiesincontext.com/",
-          "image": "https://storiesincontext.com/profile.png",
+          "image": "https://storiesincontext.com/images/profile.jpg",
           "email": "therapy@storiesincontext.com",
           "telephone": "+1-331-444-2275",
-          "priceRange": "$200–$225",
           "description": "Stories in Context is an Arabic-speaking, culturally responsive online psychotherapy practice serving individuals, couples, and families across New York State, led by Farah Khuzouz, LMFT. Narrative-focused care for Arab, Middle Eastern, and SWANA communities, interfaith and intercultural couples, immigrants, and international students, in English and Arabic.",
           "availableLanguage": ["English", "Arabic"],
           "areaServed": { "@type": "State", "name": "New York" },
@@ -1134,7 +1190,7 @@
               "name": "Do you take insurance?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Stories in Context is a private-pay practice and also accepts some insurance plans. If you have out-of-network benefits, I provide a monthly superbill you can submit to your insurer for possible partial or full reimbursement. Individual sessions are $200 and couples or family sessions are $225, each 50 minutes."
+                "text": "Stories in Context is a private-pay practice and also accepts some insurance plans. If you have out-of-network benefits, I provide a monthly superbill you can submit to your insurer for possible partial or full reimbursement. Session fees are listed on the website."
               }
             },
             {
@@ -1151,14 +1207,6 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Yes. I support international students and immigrants adjusting to life in the United States, including challenges with identity, belonging, homesickness, academic pressure, and family expectations. All sessions are online and available to anyone located in New York State."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How much does therapy cost?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Individual therapy is $200 per 50-minute session and couples or family therapy is $225 per 50-minute session. Stories in Context accepts some insurance plans and provides superbills for clients with out-of-network benefits who wish to seek reimbursement."
               }
             },
             {
@@ -1227,19 +1275,27 @@
             <a href="#contact" class="btn fade d3">Book a free 15-minute consultation</a>
         </div>
         <div class="hero-r">
-            <!-- For best Largest Contentful Paint, replace this hotlinked Unsplash URL with a locally hosted, optimized WebP (e.g. hero.webp). -->
-            <img src="https://images.unsplash.com/photo-1750859479417-54383840d7e7?w=900&q=80&fit=crop"
-                alt="Moroccan riad courtyard with pool and carved wooden door" width="900" height="700"
-                fetchpriority="high" decoding="async" crossorigin="anonymous" />
+            <picture>
+                <!-- Hidden below 861px — only request the file on desktop -->
+                <source media="(min-width: 861px)" type="image/webp" srcset="images/hero.webp" />
+                <source media="(min-width: 861px)" srcset="images/hero.jpg" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
+                    alt="Moroccan riad courtyard with pool and carved wooden door" width="900" height="1384"
+                    fetchpriority="high" decoding="async" />
+            </picture>
         </div>
     </section>
 
     <!-- IMAGE STRIP -->
     <div class="img-strip">
         <div class="img-strip-cell">
-            <img src="https://images.unsplash.com/photo-1761940546675-dda512e218db?w=700&q=80&fit=crop"
-                alt="Carved plaster arabesques and cedar mashrabiya at Dar El Bacha, Marrakech" width="1400"
-                height="500" loading="lazy" decoding="async" crossorigin="anonymous" />
+            <picture>
+                <source media="(min-width: 861px)" type="image/webp" srcset="images/strip.webp" />
+                <source media="(min-width: 861px)" srcset="images/strip.jpg" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
+                    alt="Carved plaster arabesques and cedar mashrabiya at Dar El Bacha, Marrakech" width="1600"
+                    height="600" loading="lazy" decoding="async" />
+            </picture>
         </div>
     </div>
 
@@ -1247,9 +1303,12 @@
     <section class="about" id="about">
         <div class="about-top">
             <div class="about-img">
-                <img src="profile.png"
-                    alt="Farah Khuzouz, LMFT — Arabic-speaking, culturally responsive online marriage and family therapist serving New York State"
-                    width="489" height="539" loading="lazy" decoding="async" />
+                <picture>
+                    <source type="image/webp" srcset="images/profile.webp" />
+                    <img src="images/profile.jpg"
+                        alt="Farah Khuzouz, LMFT — Arabic-speaking, culturally responsive online marriage and family therapist serving New York State"
+                        width="489" height="539" loading="lazy" decoding="async" />
+                </picture>
             </div>
             <div class="about-r">
                 <span class="section-label fade">About Farah Khuzouz, LMFT</span>
@@ -1403,9 +1462,12 @@
 
     <!-- IMAGE BREAK WITH QUOTE -->
     <div class="img-break">
-        <img src="grandparents-book.png"
-            alt="Open family photo album with vintage photographs of multiple generations on a wooden table"
-            width="1600" height="700" loading="lazy" decoding="async" />
+        <picture>
+            <source type="image/webp" srcset="images/grandparents-book.webp" />
+            <img src="images/grandparents-book.jpg"
+                alt="Open family photo album with vintage photographs of multiple generations on a wooden table"
+                width="1024" height="682" loading="lazy" decoding="async" />
+        </picture>
         <div class="img-break-overlay">
             <blockquote class="fade">"Your culture is not a footnote, it's the context."</blockquote>
         </div>
@@ -1455,8 +1517,11 @@
         <p class="fees-note fade d3">Out-of-network. Superbill available on request.</p>
         <div class="fees-badge fade d3">
             <a href="https://mentaya.com" target="_blank" rel="noopener noreferrer" class="mentaya-badge">
-                <img src="https://storage.googleapis.com/zaya-health.appspot.com/public-images/mentaya_partner_badge_light.png"
-                    alt="Mentaya Badge" />
+                <picture>
+                    <source type="image/webp" srcset="images/mentaya-badge.webp" />
+                    <img src="images/mentaya-badge.png" width="220" height="219" loading="lazy" decoding="async"
+                        alt="Mentaya Badge" />
+                </picture>
             </a>
         </div>
     </section>
@@ -1651,7 +1716,7 @@
                 <!-- Professional verification provided by Psychology Today -->
                 <a href="https://www.psychologytoday.com/profile/1600954" target="_blank" rel="noopener noreferrer"
                     class="pt-badge" title="Farah Khuzouz — Psychology Today">
-                    <img src="psychology-today-badge.svg" width="186" height="60"
+                    <img src="psychology-today-badge.svg" width="186" height="60" loading="lazy" decoding="async"
                         alt="Psychology Today Verified — Farah Khuzouz" />
                 </a>
                 <!-- End Verification -->
